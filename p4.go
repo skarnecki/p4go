@@ -553,6 +553,12 @@ func (p4 *P4) SetProtocol(protocol string, value string) {
 	C.free(unsafe.Pointer(c_value))
 }
 
+func (p4 *P4) SetOs(os string) {
+	c_os := C.CString(os)
+	C.SetOs(p4.handle, c_os)
+	C.free(unsafe.Pointer(c_os))
+}
+
 func (p4 *P4) SetVar(variable string, value string) {
 	c_variable := C.CString(variable)
 	c_value := C.CString(value)
